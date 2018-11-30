@@ -26,6 +26,7 @@ namespace WerewolfClient
         private string _myRole;
         private bool _isDead;
         private List<Player> players = null;
+        private Form _loginconstruct;
         public MainForm()
         {
             InitializeComponent();
@@ -44,6 +45,12 @@ namespace WerewolfClient
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
+
+          }
+
+        public void addSignIn(Form login)
+        {
+            _loginconstruct = login;
         }
 
         private void OnTimerEvent(object sender, EventArgs e)
@@ -293,6 +300,13 @@ namespace WerewolfClient
                             }
                         }
                         break;
+                    case EventEnum.SignOut:
+                        if(wm.EventPayloads["Success"]==WerewolfModel.TRUE)
+                        {
+                            _loginconstruct.Visible = true;
+                            this.Visible = false;
+                        }
+                        break;
                 }
                 // need to reset event
                 wm.Event = EventEnum.NOP;
@@ -309,6 +323,16 @@ namespace WerewolfClient
             WerewolfCommand wcmd = new WerewolfCommand();
             wcmd.Action = CommandEnum.JoinGame;
             controller.ActionPerformed(wcmd);
+        }
+
+        private void BtnSignOut_Click(object sender, EventArgs e)
+        {
+            Login login =(Login)_loginconstruct;
+                WerewolfCommand wcmd = new WerewolfCommand();
+                wcmd.Action = WerewolfCommand.CommandEnum.SignOut;
+            wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
+            controller.ActionPerformed(wcmd);
+        
         }
 
         private void BtnVote_Click(object sender, EventArgs e)

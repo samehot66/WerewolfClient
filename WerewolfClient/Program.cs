@@ -20,6 +20,7 @@ namespace WerewolfClient
             MainForm mMainForm = new MainForm();
             mMainForm.Visible = false;
             Login mLogin = new Login(mMainForm);
+            mMainForm.addSignIn(mLogin);
             WerewolfController mControler =  WerewolfController.GetInstance();
             WerewolfModel mModel = new WerewolfModel();
 
