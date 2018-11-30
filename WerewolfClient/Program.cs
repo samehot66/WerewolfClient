@@ -35,6 +35,7 @@ namespace WerewolfClient
             mModel.AttachObserver(mLogin);
             mModel.AttachObserver(mMainForm);
 
+
             Application.Run(mLogin);
         }
     }
