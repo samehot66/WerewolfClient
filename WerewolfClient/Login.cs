@@ -78,7 +78,9 @@ namespace WerewolfClient
             return TBServer.Text;
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
 
-        
+        }
     }
 }
