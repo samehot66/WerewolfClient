@@ -82,5 +82,20 @@ namespace WerewolfClient
         {
 
         }
+
+        private void Players2_Click(object sender, EventArgs e)
+        {
+            TBServer.Text = "http://project-ile.net:2342/werewolf/";
+        }
+
+        private void Players4_Click(object sender, EventArgs e)
+        {
+            TBServer.Text = "http://project-ile.net:2344/werewolf/";
+        }
+
+        private void Players16_Click(object sender, EventArgs e)
+        {
+            TBServer.Text = "http://project-ile.net:23416/werewolf/";
+        }
     }
 }
